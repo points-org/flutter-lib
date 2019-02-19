@@ -73,8 +73,10 @@ class Cognito implements TokenStore {
     });
   }
 
-  Observable<void> signUp(String username, String password) {
-    return Observable<void>.fromFuture(_userPool.signUp(username, password))
+  Observable<void> signUp(String username, String password,
+      {List<AttributeArg> attributes}) {
+    return Observable<void>.fromFuture(
+            _userPool.signUp(username, password, userAttributes: attributes))
         .onErrorResume((error) {
       if (error is CognitoClientException &&
           error.code == 'UsernameExistsException') {
