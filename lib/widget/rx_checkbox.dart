@@ -27,7 +27,7 @@ class RxCheckbox extends StatefulWidget {
 }
 
 class _State extends State<RxCheckbox> {
-  bool _value;
+  bool _value = false;
   StreamSubscription<bool> _subscription;
 
   @override

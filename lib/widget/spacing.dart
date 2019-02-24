@@ -4,13 +4,13 @@ class HorizontalSpacing extends StatelessWidget {
   final double height;
   final Color color;
 
-  HorizontalSpacing({this.height = 10, this.color});
+  HorizontalSpacing({this.height = 15, this.color});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: height,
-      color: color ?? Theme.of(context).dividerColor,
+      color: color ?? Colors.transparent,
     );
   }
 }
