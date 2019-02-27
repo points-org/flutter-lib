@@ -4,7 +4,7 @@ class HorizontalSpacing extends StatelessWidget {
   final double height;
   final Color color;
 
-  HorizontalSpacing({this.height = 15, this.color});
+  HorizontalSpacing({this.height = 10, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class VerticalSpacing extends StatelessWidget {
   final double width;
   final Color color;
 
-  VerticalSpacing({this.width = 15.0, this.color});
+  VerticalSpacing({this.width = 10, this.color});
 
   @override
   Widget build(BuildContext context) {
