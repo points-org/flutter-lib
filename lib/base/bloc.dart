@@ -114,8 +114,8 @@ class BlocData<T> implements BehaviorSubject<T>, Disposable {
   }
 
   @override
-  Observable<List<T>> bufferCount(int count, [int skip]) {
-    return _inner.bufferCount(count, skip);
+  Observable<List<T>> bufferCount(int count, [int startBufferEvery = 0]) {
+    return _inner.bufferCount(count, startBufferEvery);
   }
 
   @override
@@ -414,8 +414,8 @@ class BlocData<T> implements BehaviorSubject<T>, Disposable {
   }
 
   @override
-  ValueConnectableObservable<T> publishValue({T seedValue}) {
-    return _inner.publishValue(seedValue: seedValue);
+  ValueConnectableObservable<T> publishValue() {
+    return _inner.publishValue();
   }
 
   @override
@@ -444,8 +444,8 @@ class BlocData<T> implements BehaviorSubject<T>, Disposable {
   }
 
   @override
-  ValueObservable<T> shareValue({T seedValue}) {
-    return _inner.shareValue(seedValue: seedValue);
+  ValueObservable<T> shareValue() {
+    return _inner.shareValue();
   }
 
   @override
@@ -561,8 +561,8 @@ class BlocData<T> implements BehaviorSubject<T>, Disposable {
   }
 
   @override
-  Observable<Stream<T>> windowCount(int count, [int skip]) {
-    return _inner.windowCount(count, skip);
+  Observable<Stream<T>> windowCount(int count, [int startBufferEvery = 0]) {
+    return _inner.windowCount(count, startBufferEvery);
   }
 
   @override
@@ -603,5 +603,28 @@ class BlocData<T> implements BehaviorSubject<T>, Disposable {
   @override
   Observable<List<T>> pairwise() {
     return _inner.pairwise();
+  }
+
+  @override
+  Observable<GroupByObservable<T, S>> groupBy<S>(S Function(T value) grouper) {
+    return _inner.groupBy(grouper);
+  }
+
+  @override
+  bool get hasValue => _inner.hasValue;
+
+  @override
+  void onAddError(Object error, [StackTrace stackTrace]) {
+    return _inner.onAddError(error, stackTrace);
+  }
+
+  @override
+  ValueConnectableObservable<T> publishValueSeeded(T seedValue) {
+    return _inner.publishValueSeeded(seedValue);
+  }
+
+  @override
+  ValueObservable<T> shareValueSeeded(T seedValue) {
+    return _inner.shareValueSeeded(seedValue);
   }
 }
