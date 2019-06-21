@@ -109,18 +109,8 @@ class BlocData<T> implements BehaviorSubject<T>, Disposable {
   }
 
   @override
-  Observable<List<T>> buffer(SamplerBuilder<T, List<T>> sampler) {
-    return _inner.buffer(sampler);
-  }
-
-  @override
   Observable<List<T>> bufferCount(int count, [int startBufferEvery = 0]) {
     return _inner.bufferCount(count, startBufferEvery);
-  }
-
-  @override
-  Observable<List<T>> bufferFuture<O>(Future<O> Function() onFutureHandler) {
-    return _inner.bufferFuture(onFutureHandler);
   }
 
   @override
@@ -131,11 +121,6 @@ class BlocData<T> implements BehaviorSubject<T>, Disposable {
   @override
   Observable<List<T>> bufferTime(Duration duration) {
     return _inner.bufferTime(duration);
-  }
-
-  @override
-  Observable<List<T>> bufferWhen<O>(Stream<O> other) {
-    return _inner.bufferWhen(other);
   }
 
   @override
@@ -165,11 +150,6 @@ class BlocData<T> implements BehaviorSubject<T>, Disposable {
 
   @override
   StreamController<T> get controller => _inner.controller;
-
-  @override
-  Observable<T> debounce(Duration duration) {
-    return _inner.debounce(duration);
-  }
 
   @override
   Observable<T> defaultIfEmpty(T defaultValue) {
@@ -513,11 +493,6 @@ class BlocData<T> implements BehaviorSubject<T>, Disposable {
   }
 
   @override
-  Observable<T> throttle(Duration duration) {
-    return _inner.throttle(duration);
-  }
-
-  @override
   Observable<TimeInterval<T>> timeInterval() {
     return _inner.timeInterval();
   }
@@ -556,18 +531,8 @@ class BlocData<T> implements BehaviorSubject<T>, Disposable {
   }
 
   @override
-  Observable<Stream<T>> window(SamplerBuilder<T, Stream<T>> sampler) {
-    return _inner.window(sampler);
-  }
-
-  @override
   Observable<Stream<T>> windowCount(int count, [int startBufferEvery = 0]) {
     return _inner.windowCount(count, startBufferEvery);
-  }
-
-  @override
-  Observable<Stream<T>> windowFuture<O>(Future<O> Function() onFutureHandler) {
-    return _inner.windowFuture(onFutureHandler);
   }
 
   @override
@@ -578,11 +543,6 @@ class BlocData<T> implements BehaviorSubject<T>, Disposable {
   @override
   Observable<Stream<T>> windowTime(Duration duration) {
     return _inner.windowTime(duration);
-  }
-
-  @override
-  Observable<Stream<T>> windowWhen<O>(Stream<O> other) {
-    return _inner.windowWhen(other);
   }
 
   @override
@@ -626,5 +586,40 @@ class BlocData<T> implements BehaviorSubject<T>, Disposable {
   @override
   ValueObservable<T> shareValueSeeded(T seedValue) {
     return _inner.shareValueSeeded(seedValue);
+  }
+
+  @override
+  Observable<T> debounceTime(Duration duration) {
+    return _inner.debounceTime(duration);
+  }
+
+  @override
+  Observable<T> sampleTime(Duration duration) {
+    return _inner.sampleTime(duration);
+  }
+
+  @override
+  Observable<T> throttleTime(Duration duration, {bool trailing = false}) {
+    return _inner.throttleTime(duration, trailing: trailing);
+  }
+
+  @override
+  Observable<List<T>> buffer(Stream window) {
+    return _inner.buffer(window);
+  }
+
+  @override
+  Observable<T> debounce(Stream Function(T event) window) {
+    return _inner.debounce(window);
+  }
+
+  @override
+  Observable<T> throttle(Stream Function(T event) window, {bool trailing = false}) {
+    return _inner.throttle(window, trailing: trailing);
+  }
+
+  @override
+  Observable<Stream<T>> window(Stream window) {
+    return _inner.window(window);
   }
 }
