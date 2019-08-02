@@ -13,7 +13,7 @@ class ProgressDialog extends StatelessWidget {
           children: <Widget>[
             CircularProgressIndicator(),
             Padding(
-              child: Text('Loading...'),
+              child: Text('请稍后...'),
               padding: EdgeInsets.symmetric(horizontal: 15.0),
             ),
           ],
